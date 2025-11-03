@@ -2,8 +2,8 @@
 
 #define IN1    26  // Replace the ? with the GPIO pin you selected to connect IN1
 #define IN2    25   // Replace the ? with the GPIO pin you selected to connect IN2
-#define TOUCH_PIN 4  // Replace the ? with the GPIO touch pin you selected 
-#define THRESHOLD 100   // Replace the ? with the reading when the pin is touched from Lab 3
+#define TOUCH_PIN 13  // Replace the ? with the GPIO touch pin you selected 
+#define THRESHOLD 108   // Replace the ? with the reading when the pin is touched from Lab 3
 
 int touch_reading;
 
@@ -16,7 +16,7 @@ void setup() {
 
 void loop() {
   touch_reading = touchRead(TOUCH_PIN); // Read the touch sensor
-  Serial.begin(115200);
+
   
   /* if TOUCH_PIN is touched, then rotate the shaft in clockwise
      else TOUCH_PIN is not touched, then rotate the shaft in counterclockwise */
@@ -24,10 +24,9 @@ void loop() {
   if (touch_reading < THRESHOLD){
      digitalWrite(IN1, HIGH);
      digitalWrite(IN2, LOW);  
-     Serial.print("hi");
+
   }else{
      digitalWrite(IN1, LOW);
      digitalWrite(IN2, HIGH);  
-     Serial.print("no");
   }
 }
